@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BLL_Hospital360/BLL_Hospital360.csproj" />
+  <Project Path="DAL_Hospital360/DAL_Hospital360.csproj" />
+  <Project Path="PL_Hospital360/PL_Hospital360.csproj" />
+</Solution>
