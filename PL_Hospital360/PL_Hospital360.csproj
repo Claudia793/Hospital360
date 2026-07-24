@@ -89,6 +89,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL_Hospital360\BLL_Hospital360.csproj">
+      <Project>{6851bc1e-56ff-4c0c-9419-85c216d24c01}</Project>
+      <Name>BLL_Hospital360</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL_Hospital360\DAL_Hospital360.csproj">
+      <Project>{1217bff9-b700-48d8-a504-0792667393ca}</Project>
+      <Name>DAL_Hospital360</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

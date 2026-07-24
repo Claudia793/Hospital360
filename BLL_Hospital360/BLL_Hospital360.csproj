@@ -43,5 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_Hospital360\DAL_Hospital360.csproj">
+      <Project>{1217bff9-b700-48d8-a504-0792667393ca}</Project>
+      <Name>DAL_Hospital360</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
