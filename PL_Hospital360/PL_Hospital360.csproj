@@ -69,6 +69,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Hospital360\frmHospital360.aspx" />
+    <Content Include="JavaScript\jquery.cookie.js" />
+    <Content Include="Login\css\font-awesome.min.css" />
+    <Content Include="Login\css\style.css" />
+    <Content Include="Login\fonts\fontawesome-webfont.svg" />
+    <Content Include="Login\frmInicioSesion.aspx" />
+    <Content Include="Login\js\jquery.min.js" />
+    <Content Include="Login\js\jquery.vide.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,9 +89,21 @@
     <Compile Include="Hospital360\frmHospital360.aspx.designer.cs">
       <DependentUpon>frmHospital360.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login\frmInicioSesion.aspx.cs">
+      <DependentUpon>frmInicioSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmInicioSesion.aspx.designer.cs">
+      <DependentUpon>frmInicioSesion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Login\fonts\fontawesome-webfont.eot" />
+    <Content Include="Login\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Login\fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -96,8 +115,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Hospital360\assest\" />
-    <Folder Include="JavaScript\" />
-    <Folder Include="Login\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="BLL_Hospital360/BLL_Hospital360.csproj" />
-  <Project Path="DAL_Hospital360/DAL_Hospital360.csproj" />
-  <Project Path="PL_Hospital360/PL_Hospital360.csproj" />
+  <Project Path="BLL_Hospital360/BLL_Hospital360.csproj" Id="6851bc1e-56ff-4c0c-9419-85c216d24c01" />
+  <Project Path="DAL_Hospital360/DAL_Hospital360.csproj" Id="1217bff9-b700-48d8-a504-0792667393ca" />
+  <Project Path="PL_Hospital360/PL_Hospital360.csproj" Id="dae322b0-5b8b-4a81-9000-21da4efb200a" />
 </Solution>

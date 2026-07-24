@@ -11,7 +11,7 @@ namespace PL_Hospital360.Login
 {
 
 
-    public partial class frmHospital360
+    public partial class frmInicioSesion
     {
 
         /// <summary>
