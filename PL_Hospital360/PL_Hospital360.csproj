@@ -68,11 +68,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Hospital360\frmHospital360.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hospital360\frmHospital360.aspx.cs">
+      <DependentUpon>frmHospital360.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hospital360\frmHospital360.aspx.designer.cs">
+      <DependentUpon>frmHospital360.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Hospital360\assest\" />
+    <Folder Include="JavaScript\" />
+    <Folder Include="Login\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

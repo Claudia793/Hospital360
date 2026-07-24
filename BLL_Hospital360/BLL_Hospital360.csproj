@@ -49,5 +49,9 @@
       <Name>DAL_Hospital360</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BD\" />
+    <Folder Include="Hospital360\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
