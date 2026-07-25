@@ -67,8 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Citas.aspx" />
+    <Content Include="Content\Sitio.css" />
+    <Content Include="Content\theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Hospital360\frmHospital360.aspx" />
+    <Content Include="JavaScript\InicioSesion.js" />
     <Content Include="JavaScript\jquery.cookie.js" />
     <Content Include="Login\css\font-awesome.min.css" />
     <Content Include="Login\css\style.css" />
@@ -76,9 +80,18 @@
     <Content Include="Login\frmInicioSesion.aspx" />
     <Content Include="Login\js\jquery.min.js" />
     <Content Include="Login\js\jquery.vide.js" />
+    <Content Include="Registro.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Citas.aspx.cs">
+      <DependentUpon>Citas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Citas.aspx.designer.cs">
+      <DependentUpon>Citas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -96,7 +109,22 @@
     <Compile Include="Login\frmInicioSesion.aspx.designer.cs">
       <DependentUpon>frmInicioSesion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\ResultadosVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login\fonts\fontawesome-webfont.eot" />
@@ -115,7 +143,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Hospital360\assest\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL_Hospital360\BLL_Hospital360.csproj">
