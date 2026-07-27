@@ -11,7 +11,7 @@ using PL_Hospital360.Modelos;
 
 namespace PL_Hospital360
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class frmLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e) { }
 
@@ -30,7 +30,7 @@ namespace PL_Hospital360
             };
 
             cls_Usuarios_BLL bll = new cls_Usuarios_BLL();
-            obj = bll.IniciarSesion(obj);
+            bll.Inicio_Sesion_Usuarios(ref obj);
 
             bool exito = obj.sAXN == "EXITO";
 

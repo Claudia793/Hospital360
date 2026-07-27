@@ -74,7 +74,7 @@ namespace DAL_Hospital360.BD
         /// <summary>
         /// Obtiene o establece la conexión con la base de datos.
         /// </summary>
-        public SqlConnection Obj_CNX
+        public SqlConnection Obj_WIN
         {
             get => _Obj_CNX;
             set => _Obj_CNX = value;

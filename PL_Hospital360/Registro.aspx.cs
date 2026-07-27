@@ -36,9 +36,14 @@ namespace PL_Hospital360
             };
 
             cls_Usuarios_BLL bll = new cls_Usuarios_BLL();
-            obj = bll.Registrar(obj);
+            bll.Registrar_Usuarios(ref obj);
 
-            return new ResultadoSimpleVM { Exito = obj.sAXN == "EXITO", Mensaje = obj.sMSJError };
+
+            return new ResultadoSimpleVM
+            {
+                Exito = obj.sAXN == "EXITO",
+                Mensaje = obj.sMSJError
+            };
         }
     }
 }

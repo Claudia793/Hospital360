@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmInicioSesion.aspx.cs" Inherits="PL_Hospital360.Login.frmInicioSesion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmInicioSesion.aspx.cs" Inherits="PL_Hospital360.ModuloLogin.frmInicioSesion" %>
 
 <!DOCTYPE html>
 

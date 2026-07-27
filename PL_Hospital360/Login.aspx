@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Iniciar sesión" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="PL_Hospital360.Login" %>
+﻿<%@ Page Title="Iniciar sesión" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="PL_Hospital360.frmLogin" %>
 
 <!DOCTYPE html>
 <html>
@@ -85,11 +85,6 @@
                         ¿No tienes cuenta? <a href="Registro.aspx" style="color:var(--blue); font-weight:700; text-decoration:none;">Crear cuenta</a>
                     </p>
 
-                    <div class="demo-box">
-                        <p class="demo-title">Demo rápida</p>
-                        <p>Usuario: <code>admin</code> (o correo <code>admin@hospital360.com</code>)</p>
-                        <p>Contraseña: <code>123456</code></p>
-                    </div>
                 </div>
             </div>
         </div>

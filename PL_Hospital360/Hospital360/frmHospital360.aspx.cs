@@ -1,11 +1,11 @@
-﻿using BLL_Hospital360.Hospital360;
-using DAL_Hospital360.Hospital360;
+﻿using BLL_Hospital360.Usuarios;
+using DAL_Hospital360.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Services;
 
-namespace PL_Hospital360.Login
+namespace PL_Hospital360.Hospital360
 {
     /// <summary>
     /// Página encargada de gestionar el inicio de sesión

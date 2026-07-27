@@ -52,22 +52,22 @@ namespace BLL_Hospital360.BD
             try
             {
                 // Crea la conexión utilizando la cadena definida en Web.config.
-                Obj_BD_DAL.Obj_CNX = new SqlConnection(
+                Obj_BD_DAL.Obj_WIN = new SqlConnection(
                     ConfigurationManager
-                        .ConnectionStrings["CNX_SQL"]
+                        .ConnectionStrings["WIN_AUT"]
                         .ToString()
                 );
 
                 // Abre la conexión si se encuentra cerrada.
-                if (Obj_BD_DAL.Obj_CNX.State == ConnectionState.Closed)
+                if (Obj_BD_DAL.Obj_WIN.State == ConnectionState.Closed)
                 {
-                    Obj_BD_DAL.Obj_CNX.Open();
+                    Obj_BD_DAL.Obj_WIN.Open();
                 }
 
                 // Crea el adaptador encargado de ejecutar el procedimiento almacenado.
                 Obj_BD_DAL.Obj_DAP = new SqlDataAdapter(
                     Obj_BD_DAL.sNomSP,
-                    Obj_BD_DAL.Obj_CNX
+                    Obj_BD_DAL.Obj_WIN
                 );
 
                 Obj_BD_DAL.Obj_DAP.SelectCommand.CommandType =
@@ -116,14 +116,14 @@ namespace BLL_Hospital360.BD
             }
             finally
             {
-                if (Obj_BD_DAL.Obj_CNX != null)
+                if (Obj_BD_DAL.Obj_WIN != null)
                 {
-                    if (Obj_BD_DAL.Obj_CNX.State == ConnectionState.Open)
+                    if (Obj_BD_DAL.Obj_WIN.State == ConnectionState.Open)
                     {
-                        Obj_BD_DAL.Obj_CNX.Close();
+                        Obj_BD_DAL.Obj_WIN.Close();
                     }
 
-                    Obj_BD_DAL.Obj_CNX.Dispose();
+                    Obj_BD_DAL.Obj_WIN.Dispose();
                 }
             }
         }
@@ -141,22 +141,22 @@ namespace BLL_Hospital360.BD
             try
             {
                 // Crea la conexión utilizando la cadena definida en Web.config.
-                Obj_BD_DAL.Obj_CNX = new SqlConnection(
+                Obj_BD_DAL.Obj_WIN = new SqlConnection(
                     ConfigurationManager
-                        .ConnectionStrings["CNX_SQL"]
+                        .ConnectionStrings["WIN_AUT"]
                         .ToString()
                 );
 
                 // Abre la conexión si se encuentra cerrada.
-                if (Obj_BD_DAL.Obj_CNX.State == ConnectionState.Closed)
+                if (Obj_BD_DAL.Obj_WIN.State == ConnectionState.Closed)
                 {
-                    Obj_BD_DAL.Obj_CNX.Open();
+                    Obj_BD_DAL.Obj_WIN.Open();
                 }
 
                 // Crea el comando que ejecutará el procedimiento almacenado.
                 Obj_BD_DAL.Obj_CMD = new SqlCommand(
                     Obj_BD_DAL.sNomSP,
-                    Obj_BD_DAL.Obj_CNX
+                    Obj_BD_DAL.Obj_WIN
                 );
 
                 Obj_BD_DAL.Obj_CMD.CommandType =
@@ -214,14 +214,14 @@ namespace BLL_Hospital360.BD
             }
             finally
             {
-                if (Obj_BD_DAL.Obj_CNX != null)
+                if (Obj_BD_DAL.Obj_WIN != null)
                 {
-                    if (Obj_BD_DAL.Obj_CNX.State == ConnectionState.Open)
+                    if (Obj_BD_DAL.Obj_WIN.State == ConnectionState.Open)
                     {
-                        Obj_BD_DAL.Obj_CNX.Close();
+                        Obj_BD_DAL.Obj_WIN.Close();
                     }
 
-                    Obj_BD_DAL.Obj_CNX.Dispose();
+                    Obj_BD_DAL.Obj_WIN.Dispose();
                 }
             }
         }
