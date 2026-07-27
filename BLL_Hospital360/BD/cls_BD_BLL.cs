@@ -92,7 +92,10 @@ namespace BLL_Hospital360.BD
                                 dr["Nombre"].ToString(),
                                 TipoDatoSQL
                             )
-                            .Value = dr["Valor"].ToString();
+                            .Value = ObtenerValorParametro(
+                                dr["Valor"].ToString(),
+                                TipoDatoSQL
+                            );
                     }
                 }
 
@@ -180,7 +183,10 @@ namespace BLL_Hospital360.BD
                                 dr["Nombre"].ToString(),
                                 TipoDatoSQL
                             )
-                            .Value = dr["Valor"].ToString();
+                            .Value = ObtenerValorParametro(
+                                dr["Valor"].ToString(),
+                                TipoDatoSQL
+                            );
                     }
                 }
 
@@ -229,6 +235,28 @@ namespace BLL_Hospital360.BD
         #endregion
 
         #region Métodos privados
+
+        /// <summary>
+        /// Convierte el valor de texto almacenado en la tabla de parámetros
+        /// al valor que se enviará al SqlParameter. Los tipos no textuales
+        /// (Int, DateTime, etc.) reciben DBNull cuando el valor viene vacío,
+        /// ya que no pueden convertirse desde una cadena vacía.
+        /// </summary>
+        private object ObtenerValorParametro(string sValor, SqlDbType TipoDatoSQL)
+        {
+            bool bEsTipoTexto =
+                TipoDatoSQL == SqlDbType.VarChar ||
+                TipoDatoSQL == SqlDbType.NVarChar ||
+                TipoDatoSQL == SqlDbType.Char ||
+                TipoDatoSQL == SqlDbType.NChar;
+
+            if (!bEsTipoTexto && string.IsNullOrEmpty(sValor))
+            {
+                return DBNull.Value;
+            }
+
+            return sValor;
+        }
 
         /// <summary>
         /// Convierte el código almacenado en la tabla de parámetros

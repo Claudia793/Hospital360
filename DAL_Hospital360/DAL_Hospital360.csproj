@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD\cls_BD_DAL.cs" />
-    <Compile Include="Hospital360\cls_Usuarios_DAL.cs" />
+    <Compile Include="Catalogos\cls_Catalogos_DAL.cs" />
+    <Compile Include="Citas\cls_Citas_DAL.cs" />
+    <Compile Include="Usuarios\cls_Usuarios_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

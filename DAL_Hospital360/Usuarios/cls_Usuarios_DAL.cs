@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL_Hospital360.Hospital360
+namespace DAL_Hospital360.Usuarios
 {
     /// <summary>
     /// Representa la información de los usuarios del sistema Hospital360
