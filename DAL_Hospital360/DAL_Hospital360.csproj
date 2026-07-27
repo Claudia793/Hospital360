@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD\cls_BD_DAL.cs" />
+    <Compile Include="Catalogos\cls_Catalogos_DAL.cs" />
+    <Compile Include="Citas\cls_Citas_DAL.cs" />
+    <Compile Include="Usuarios\cls_Usuarios_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\cls_Usuarios_DAL.cs" />
   </ItemGroup>

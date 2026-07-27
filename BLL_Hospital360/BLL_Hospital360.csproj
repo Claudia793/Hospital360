@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD\cls_BD_BLL.cs" />
+
+    <Compile Include="Catalogos\cls_Catalogos_BLL.cs" />
+    <Compile Include="Citas\cls_Citas_BLL.cs" />
+    <Compile Include="Usuarios\cls_Usuarios_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\cls_Usuarios_BLL.cs" />
   </ItemGroup>
