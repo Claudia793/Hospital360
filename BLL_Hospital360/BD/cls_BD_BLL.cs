@@ -305,6 +305,9 @@ namespace BLL_Hospital360.BD
                 case "11":
                     return SqlDbType.TinyInt;
 
+                case "12":
+                    return SqlDbType.Time;
+
                 default:
                     return SqlDbType.VarChar;
             }

@@ -41,6 +41,7 @@ namespace PL_Hospital360.Modelos
     /// <summary>Una fila de la grilla de citas, ya lista para pintar en el JS.</summary>
     public class CitaVM
     {
+        public int IdCita { get; set; }
         public string NombrePaciente { get; set; }
         public string Telefono { get; set; }
         public string NombreTipoCita { get; set; }
@@ -49,5 +50,30 @@ namespace PL_Hospital360.Modelos
         public string NombreProfesional { get; set; }
         public string Fecha { get; set; }
         public string Hora { get; set; }
+    }
+
+    /// <summary>Detalle completo de una cita, para prellenar el formulario de edición.</summary>
+    public class CitaDetalleVM
+    {
+        public bool Encontrada { get; set; }
+        public int IdCita { get; set; }
+        public string NombrePaciente { get; set; }
+        public string Telefono { get; set; }
+        public string Correo { get; set; }
+        public string Fecha { get; set; }
+        public string Hora { get; set; }
+        public int IdTipoCita { get; set; }
+        public int? IdTipoMembresia { get; set; }
+        public int IdEstadoCita { get; set; }
+        public int IdProfesional { get; set; }
+        public string Observaciones { get; set; }
+        public string FechaNacimiento { get; set; }
+    }
+
+    /// <summary>Un punto Etiqueta/Cantidad, reutilizado por los reportes del panel de control.</summary>
+    public class ReporteItemVM
+    {
+        public string Etiqueta { get; set; }
+        public int Cantidad { get; set; }
     }
 }

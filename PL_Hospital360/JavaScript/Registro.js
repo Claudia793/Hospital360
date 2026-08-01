@@ -3,18 +3,29 @@ $(function () {
 });
 
 function crearCuenta() {
-    var sNombreCompleto = $("#txtNombreCompleto").val();
-    var sCorreo = $("#txtCorreo").val();
-    var sTelefono = $("#txtTelefono").val();
+    var sNombreCompleto = $("#txtNombreCompleto").val().trim();
+    var sCorreo = $("#txtCorreo").val().trim();
+    var sTelefono = $("#txtTelefono").val().trim();
+    var sCedula = $("#txtCedula").val().trim();
     var sTipoClinica = $("#ddlTipoClinica").val();
-    var sNombreUsuario = $("#txtNombreUsuario").val();
+    var sNombreUsuario = $("#txtNombreUsuario").val().trim();
     var sContrasena = $("#txtContrasena").val();
     var sConfirmarContrasena = $("#txtConfirmarContrasena").val();
 
     ocultarMensaje();
 
-    if (!sNombreCompleto || !sCorreo || !sTelefono || !sNombreUsuario || !sContrasena || !sConfirmarContrasena) {
+    if (!sNombreCompleto || !sCorreo || !sTelefono || !sCedula || !sNombreUsuario || !sContrasena || !sConfirmarContrasena) {
         mostrarMensaje("Completa todos los campos.", "danger");
+        return;
+    }
+
+    if (!/^[A-Za-zÀ-ÿ ]+$/.test(sNombreCompleto)) {
+        mostrarMensaje("El nombre completo solo puede contener letras y espacios.", "danger");
+        return;
+    }
+
+    if (!/^[0-9]{9}$/.test(sCedula)) {
+        mostrarMensaje("La cédula debe tener exactamente 9 dígitos numéricos.", "danger");
         return;
     }
 
@@ -24,7 +35,7 @@ function crearCuenta() {
     }
 
     PageMethods.Registrar(
-        sNombreCompleto, sCorreo, sTelefono, sTipoClinica,
+        sNombreCompleto, sCorreo, sTelefono, sCedula, sTipoClinica,
         sNombreUsuario, sContrasena, sConfirmarContrasena,
         onExitoRegistro, onErrorRegistro
     );
