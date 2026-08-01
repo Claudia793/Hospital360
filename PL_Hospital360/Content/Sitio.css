@@ -299,31 +299,6 @@ h1, h2, h3, .font-heading {
         color: #16a34a;
     }
 
-/* ── Demo box ─────────────────────────────────────────────────────── */
-.demo-box {
-    margin-top: 28px;
-    border-radius: var(--radius);
-    padding: 14px;
-    background: rgba(26,58,143,.05);
-    border: 1px solid var(--border);
-    font-size: 12px;
-}
-
-    .demo-box .demo-title {
-        font-weight: 700;
-        color: var(--navy);
-        margin: 0 0 4px;
-    }
-
-    .demo-box p {
-        margin: 2px 0;
-        color: var(--muted);
-    }
-
-    .demo-box code {
-        font-family: monospace;
-    }
-
 .text-center {
     text-align: center;
 }
@@ -342,3 +317,21 @@ h1, h2, h3, .font-heading {
     background: var(--navy);
     color: #fff;
 }
+
+/* ── Navbar de páginas autenticadas ───────────────────────────────── */
+.navbar-hospital {
+    background: var(--navy);
+}
+
+    .navbar-hospital a {
+        color: rgba(255,255,255,.75);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+        .navbar-hospital a:hover,
+        .navbar-hospital a.active {
+            color: #fff;
+        }

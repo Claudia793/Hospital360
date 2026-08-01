@@ -21,6 +21,7 @@ namespace DAL_Hospital360.Usuarios
         private string _sNombreCompleto;
         private string _sCorreo;
         private string _sTelefono;
+        private string _sCedula;
         private string _sNombreUsuario;
         private string _sContrasena;
         private string _sTipoClinica;
@@ -71,6 +72,15 @@ namespace DAL_Hospital360.Usuarios
         {
             get => _sTelefono;
             set => _sTelefono = value;
+        }
+
+        /// <summary>
+        /// Obtiene o establece el número de cédula del usuario.
+        /// </summary>
+        public string sCedula
+        {
+            get => _sCedula;
+            set => _sCedula = value;
         }
 
         /// <summary>

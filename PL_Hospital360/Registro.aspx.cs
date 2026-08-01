@@ -18,7 +18,7 @@ namespace PL_Hospital360
         /// <summary>Invocado desde JavaScript/Registro.js vía PageMethods.</summary>
         [WebMethod]
         public static ResultadoSimpleVM Registrar(string sNombreCompleto, string sCorreo, string sTelefono,
-            string sTipoClinica, string sNombreUsuario, string sContrasena, string sConfirmarContrasena)
+            string sCedula, string sTipoClinica, string sNombreUsuario, string sContrasena, string sConfirmarContrasena)
         {
             if (sContrasena != sConfirmarContrasena)
             {
@@ -30,6 +30,7 @@ namespace PL_Hospital360
                 sNombreCompleto = (sNombreCompleto ?? string.Empty).Trim(),
                 sCorreo = (sCorreo ?? string.Empty).Trim(),
                 sTelefono = (sTelefono ?? string.Empty).Trim(),
+                sCedula = (sCedula ?? string.Empty).Trim(),
                 sTipoClinica = sTipoClinica,
                 sNombreUsuario = (sNombreUsuario ?? string.Empty).Trim(),
                 sContrasena = sContrasena

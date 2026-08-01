@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Citas.aspx" />
     <Content Include="Content\Sitio.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Content\theme.css" />
     <Content Include="Global.asax" />
     <Content Include="JavaScript\Citas.js" />

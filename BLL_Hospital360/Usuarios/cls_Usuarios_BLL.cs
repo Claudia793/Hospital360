@@ -94,7 +94,9 @@ namespace BLL_Hospital360.Usuarios
         }
 
         /// <summary>
-        /// Registra un nuevo usuario mediante dbo.sp_RegistrarUsuario.
+        /// Registra un nuevo usuario mediante dbo.sp_RegistrarUsuario e interpreta
+        /// el código Resultado que el procedimiento devuelve (éxito, correo
+        /// duplicado, usuario duplicado, datos inválidos, etc.).
         /// </summary>
         public cls_Usuarios_DAL Registrar(cls_Usuarios_DAL obj_Usuarios_DAL)
         {
@@ -108,25 +110,69 @@ namespace BLL_Hospital360.Usuarios
             obj_Usuarios_DAL.dtParametros.Rows.Add("@NombreCompleto", "6", obj_Usuarios_DAL.sNombreCompleto);
             obj_Usuarios_DAL.dtParametros.Rows.Add("@Correo", "6", obj_Usuarios_DAL.sCorreo);
             obj_Usuarios_DAL.dtParametros.Rows.Add("@Telefono", "6", obj_Usuarios_DAL.sTelefono);
+            obj_Usuarios_DAL.dtParametros.Rows.Add("@Cedula", "6", obj_Usuarios_DAL.sCedula);
             obj_Usuarios_DAL.dtParametros.Rows.Add("@TipoClinica", "6", obj_Usuarios_DAL.sTipoClinica);
             obj_Usuarios_DAL.dtParametros.Rows.Add("@NombreUsuario", "6", obj_Usuarios_DAL.sNombreUsuario);
             obj_Usuarios_DAL.dtParametros.Rows.Add("@Contrasena", "6", obj_Usuarios_DAL.sContrasena);
 
             obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_Insert_Usuarios"];
             obj_BD_DAL.DT_Parametros = obj_Usuarios_DAL.dtParametros;
-            obj_BD_DAL.sIndAxn = "NORMAL";
+            obj_BD_DAL.sNomTabla = "Registro";
 
-            obj_BD_BLL.EjecutaProcesosComando(ref obj_BD_DAL);
+            obj_BD_BLL.EjecutaProcesosTabla(ref obj_BD_DAL);
 
-            if (obj_BD_DAL.sMsjErrorBD == string.Empty)
-            {
-                obj_Usuarios_DAL.sAXN = "EXITO";
-                obj_Usuarios_DAL.sMSJError = string.Empty;
-            }
-            else
+            if (obj_BD_DAL.sMsjErrorBD != string.Empty)
             {
                 obj_Usuarios_DAL.sAXN = "ERROR";
                 obj_Usuarios_DAL.sMSJError = obj_BD_DAL.sMsjErrorBD;
+                return obj_Usuarios_DAL;
+            }
+
+            if (obj_BD_DAL.DS == null || obj_BD_DAL.DS.Tables.Count == 0 || obj_BD_DAL.DS.Tables[0].Rows.Count == 0)
+            {
+                obj_Usuarios_DAL.sAXN = "ERROR";
+                obj_Usuarios_DAL.sMSJError = "El procedimiento almacenado no devolvió información.";
+                return obj_Usuarios_DAL;
+            }
+
+            int iResultado = Convert.ToInt32(obj_BD_DAL.DS.Tables[0].Rows[0]["Resultado"]);
+
+            switch (iResultado)
+            {
+                case 1:
+                    obj_Usuarios_DAL.sAXN = "EXITO";
+                    obj_Usuarios_DAL.sMSJError = string.Empty;
+                    break;
+
+                case -1:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Ya existe un usuario registrado con ese correo electrónico.";
+                    break;
+
+                case -2:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Ya existe un usuario registrado con ese nombre de usuario.";
+                    break;
+
+                case -3:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Debe completar todos los campos obligatorios con un nombre válido, un correo válido y una cédula de 9 dígitos.";
+                    break;
+
+                case -6:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Ya existe un usuario registrado con esa cédula.";
+                    break;
+
+                case -5:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Ocurrió un error interno al registrar el usuario. Intente nuevamente.";
+                    break;
+
+                default:
+                    obj_Usuarios_DAL.sAXN = "ERROR";
+                    obj_Usuarios_DAL.sMSJError = "Ocurrió un error al registrar el usuario.";
+                    break;
             }
 
             return obj_Usuarios_DAL;

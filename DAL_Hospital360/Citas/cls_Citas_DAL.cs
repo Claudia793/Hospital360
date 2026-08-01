@@ -18,6 +18,14 @@ namespace DAL_Hospital360.Citas
         private int? _iIdTipoCita;
         private int? _iIdTipoMembresia;
 
+        private int _iIdUsuario;
+        private int? _iIdCita;
+        private string _sTelefono;
+        private string _sCorreo;
+        private TimeSpan? _dHora;
+        private string _sObservaciones;
+        private DateTime? _dFechaNacimiento;
+
         private string _sAXN;
         private string _sMSJError;
         private DataTable _dtDatos;
@@ -67,6 +75,55 @@ namespace DAL_Hospital360.Citas
         {
             get => _iIdTipoMembresia;
             set => _iIdTipoMembresia = value;
+        }
+
+        /// <summary>Obtiene o establece el IdUsuario de la sesión activa (dueño de la cita).</summary>
+        public int iIdUsuario
+        {
+            get => _iIdUsuario;
+            set => _iIdUsuario = value;
+        }
+
+        /// <summary>Obtiene o establece el Id de la cita (actualizar/eliminar/obtener).</summary>
+        public int? iIdCita
+        {
+            get => _iIdCita;
+            set => _iIdCita = value;
+        }
+
+        /// <summary>Obtiene o establece el teléfono del paciente.</summary>
+        public string sTelefono
+        {
+            get => _sTelefono;
+            set => _sTelefono = value;
+        }
+
+        /// <summary>Obtiene o establece el correo del paciente.</summary>
+        public string sCorreo
+        {
+            get => _sCorreo;
+            set => _sCorreo = value;
+        }
+
+        /// <summary>Obtiene o establece la hora de la cita.</summary>
+        public TimeSpan? dHora
+        {
+            get => _dHora;
+            set => _dHora = value;
+        }
+
+        /// <summary>Obtiene o establece las observaciones de la cita.</summary>
+        public string sObservaciones
+        {
+            get => _sObservaciones;
+            set => _sObservaciones = value;
+        }
+
+        /// <summary>Obtiene o establece la fecha de nacimiento del paciente.</summary>
+        public DateTime? dFechaNacimiento
+        {
+            get => _dFechaNacimiento;
+            set => _dFechaNacimiento = value;
         }
 
         /// <summary>Obtiene o establece la acción que se realizó.</summary>
