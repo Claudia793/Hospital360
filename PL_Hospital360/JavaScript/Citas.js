@@ -17,6 +17,22 @@ var COLOR_ESTADO = {
 var COLOR_ESTADO_DEFECTO = "#5a6e99";
 var PALETA_CATEGORICA = ["#2563eb", "#f59e0b", "#06b6d4", "#8b5cf6", "#22c55e", "#ef4444"];
 
+var ACCION_BADGE = {
+    "LOGIN": "badge-green",
+    "LOGOUT": "badge-muted",
+    "INSERTAR": "badge-blue",
+    "ACTUALIZAR": "badge-amber",
+    "ELIMINAR": "badge-red"
+};
+
+var ACCION_TEXTO = {
+    "LOGIN": "Inicio de sesión",
+    "LOGOUT": "Cierre de sesión",
+    "INSERTAR": "Registro creado",
+    "ACTUALIZAR": "Registro actualizado",
+    "ELIMINAR": "Registro eliminado"
+};
+
 var modalCita = null;
 var modalEliminar = null;
 var oListaActual = [];
@@ -47,6 +63,9 @@ $(function () {
         e.preventDefault();
         cerrarSesion();
     });
+
+    $("#btnActualizarAuditoria").on("click", cargarAuditoria);
+    $("#panelAuditoria").on("show.bs.offcanvas", cargarAuditoria);
 });
 
 // ---------- Catálogos ----------
@@ -69,7 +88,10 @@ function onExitoCatalogos(catalogos) {
 function llenarCombo(sSelector, lista) {
     var $combo = $(sSelector);
     (lista || []).forEach(function (item) {
-        $combo.append($("<option></option>").val(item.Id).text(item.Nombre));
+        var sTexto = item.Precio != null
+            ? item.Nombre + " — ₡" + item.Precio.toLocaleString("es-CR")
+            : item.Nombre;
+        $combo.append($("<option></option>").val(item.Id).text(sTexto));
     });
 }
 
@@ -446,6 +468,57 @@ function alternarChartTercero(vista) {
     $("#btnVerPorProfesional").toggleClass("active", vista === "profesional");
 
     actualizarChartTercero(lista);
+}
+
+// ---------- Panel Auditoría ----------
+function cargarAuditoria() {
+    ocultarMensajeAuditoria();
+    PageMethods.ListarAuditoria(onExitoAuditoria, onErrorCargaAuditoria);
+}
+
+function onExitoAuditoria(lista) {
+    lista = lista || [];
+    pintarTablaAuditoria(lista);
+    $("#lblContadorAuditoria").text("(" + lista.length + " resultado" + (lista.length === 1 ? "" : "s") + ")");
+}
+
+function pintarTablaAuditoria(lista) {
+    var $tbody = $("#tbodyAuditoria").empty();
+
+    if (lista.length === 0) {
+        $tbody.append(
+            '<tr><td colspan="5" class="text-center py-4" style="color:var(--h360-muted);">Aún no hay actividad registrada.</td></tr>'
+        );
+        return;
+    }
+
+    lista.forEach(function (item) {
+        var sBadge = ACCION_BADGE[item.TipoAccion] || "badge-muted";
+        var sTexto = ACCION_TEXTO[item.TipoAccion] || item.TipoAccion;
+
+        var $fila = $("<tr></tr>");
+        $fila.append($("<td></td>").text(item.IdAuditoria));
+        $fila.append($("<td></td>").append($('<span class="badge-h360 ' + sBadge + '"></span>').text(sTexto)));
+        $fila.append($("<td></td>").text(item.TablaAfectada));
+        $fila.append($("<td></td>").text(item.Descripcion));
+        $fila.append($("<td></td>").text(item.FechaAccion));
+        $tbody.append($fila);
+    });
+}
+
+function onErrorCargaAuditoria(error) {
+    mostrarMensajeAuditoria("ERROR: No se pudo contactar al servidor (" + error.get_message() + ")", "danger");
+}
+
+function mostrarMensajeAuditoria(sTexto, sTipo) {
+    $("#divMensajeAuditoria")
+        .removeClass("d-none alert-success alert-danger")
+        .addClass("alert-" + sTipo)
+        .text(sTexto);
+}
+
+function ocultarMensajeAuditoria() {
+    $("#divMensajeAuditoria").addClass("d-none");
 }
 
 // ---------- Sesión / mensajes ----------

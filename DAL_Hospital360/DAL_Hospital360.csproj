@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditoria\cls_Auditoria_DAL.cs" />
     <Compile Include="BD\cls_BD_DAL.cs" />
     <Compile Include="Catalogos\cls_Catalogos_DAL.cs" />
     <Compile Include="Citas\cls_Citas_DAL.cs" />
