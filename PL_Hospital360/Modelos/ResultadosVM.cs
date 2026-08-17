@@ -27,6 +27,9 @@ namespace PL_Hospital360.Modelos
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+
+        /// <summary>Precio del ítem, solo aplica al catálogo de tipos de membresía.</summary>
+        public decimal? Precio { get; set; }
     }
 
     /// <summary>Los 4 catálogos que llenan los filtros de Citas.aspx en una sola llamada.</summary>
@@ -75,5 +78,15 @@ namespace PL_Hospital360.Modelos
     {
         public string Etiqueta { get; set; }
         public int Cantidad { get; set; }
+    }
+
+    /// <summary>Una fila del historial de auditoría del usuario, lista para pintar en el JS.</summary>
+    public class AuditoriaVM
+    {
+        public int IdAuditoria { get; set; }
+        public string TablaAfectada { get; set; }
+        public string TipoAccion { get; set; }
+        public string Descripcion { get; set; }
+        public string FechaAccion { get; set; }
     }
 }

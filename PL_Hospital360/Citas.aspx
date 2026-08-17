@@ -22,6 +22,7 @@
                         <p class="mb-0 small fw-semibold"><%= System.Web.HttpUtility.HtmlEncode(NombreUsuarioSesion) %></p>
                         <p class="mb-0" style="color:var(--h360-muted);font-size:.75rem;">Usuario</p>
                     </div>
+                    <button type="button" id="btnAbrirAuditoria" class="btn-h360 btn-h360-outline" data-bs-toggle="offcanvas" data-bs-target="#panelAuditoria"><i class="bi bi-clock-history"></i> Auditoría</button>
                     <a href="#" id="lnkCerrarSesion" class="btn-h360 btn-h360-outline">Salir</a>
                 </div>
             </div>
@@ -275,6 +276,37 @@
                     <div class="d-flex gap-2">
                         <button type="button" class="btn-h360 btn-h360-outline flex-fill" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" id="btnConfirmarEliminar" class="btn-h360 btn-h360-danger flex-fill">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Auditoría -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="panelAuditoria" style="width:min(720px, 100%);">
+            <div class="offcanvas-header h360-modal-header">
+                <div>
+                    <h5 class="offcanvas-title mb-0">Auditoría</h5>
+                    <p class="mb-0 small" style="color:#c7d6f7;">Historial de tus inicios de sesión y de las acciones que realizaste.</p>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="divMensajeAuditoria" class="alert d-none" role="alert"></div>
+
+                <div class="h360-card">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-3" style="border-bottom:1px solid var(--h360-border);">
+                        <p class="fw-bold mb-0 small">Historial <span id="lblContadorAuditoria" class="fw-normal" style="color:var(--h360-muted);">(0 resultados)</span></p>
+                        <button type="button" id="btnActualizarAuditoria" class="btn-h360 btn-h360-outline"><i class="bi bi-arrow-clockwise"></i> Actualizar</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table h360-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th><th>Acción</th><th>Módulo</th><th>Descripción</th><th>Fecha y hora</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyAuditoria"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>

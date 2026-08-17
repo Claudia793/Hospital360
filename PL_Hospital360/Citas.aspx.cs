@@ -4,6 +4,7 @@ using System.Data;
 using System.Globalization;
 using System.Web;
 using System.Web.Services;
+using BLL_Hospital360.Auditoria;
 using BLL_Hospital360.Catalogos;
 using BLL_Hospital360.Citas;
 using BLL_Hospital360.Reportes;
@@ -352,6 +353,35 @@ namespace PL_Hospital360
             return lista;
         }
 
+        /// <summary>
+        /// Lista el historial de auditoría (dbo.sp_ListarAuditoria) del
+        /// usuario en sesión, del más reciente al más antiguo.
+        /// </summary>
+        [WebMethod(EnableSession = true)]
+        public static List<AuditoriaVM> ListarAuditoria()
+        {
+            cls_Auditoria_BLL bll = new cls_Auditoria_BLL();
+            var obj = bll.Listar(ObtenerIdUsuarioSesion());
+
+            List<AuditoriaVM> lista = new List<AuditoriaVM>();
+            if (obj.dtDatos != null)
+            {
+                foreach (DataRow fila in obj.dtDatos.Rows)
+                {
+                    lista.Add(new AuditoriaVM
+                    {
+                        IdAuditoria = Convert.ToInt32(fila["IdAuditoria"]),
+                        TablaAfectada = fila["TablaAfectada"].ToString(),
+                        TipoAccion = fila["TipoAccion"].ToString(),
+                        Descripcion = fila["Descripcion"] == DBNull.Value ? "" : fila["Descripcion"].ToString(),
+                        FechaAccion = Convert.ToDateTime(fila["FechaAccion"]).ToString("dd/MM/yyyy HH:mm:ss")
+                    });
+                }
+            }
+
+            return lista;
+        }
+
         /// <summary>Cierra sesión (sp_CerrarSesion) y limpia la Session de ASP.NET.</summary>
         [WebMethod(EnableSession = true)]
         public static ResultadoSimpleVM CerrarSesion()
@@ -418,7 +448,8 @@ namespace PL_Hospital360
                 lista.Add(new ItemComboVM
                 {
                     Id = Convert.ToInt32(fila[sColId]),
-                    Nombre = fila[sColNombre].ToString()
+                    Nombre = fila[sColNombre].ToString(),
+                    Precio = dt.Columns.Contains("Precio") ? Convert.ToDecimal(fila["Precio"]) : (decimal?)null
                 });
             }
             return lista;

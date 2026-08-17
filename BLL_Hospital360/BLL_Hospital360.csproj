@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditoria\cls_Auditoria_BLL.cs" />
     <Compile Include="BD\cls_BD_BLL.cs" />
     <Compile Include="Catalogos\cls_Catalogos_BLL.cs" />
     <Compile Include="Citas\cls_Citas_BLL.cs" />
